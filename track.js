@@ -5,7 +5,7 @@ class Track{
   constructor(idTrack,colorTrack) {
 	   // variables de classe.
     this.id = idTrack; //int - id reserve for the track
-	  this.colorTrack = colorTrack; //String - color reserve for the track
+	this.colorTrack = colorTrack; //String - color reserve for the track
     //Initialize song as undefined
     this.sound=undefined; //String - sound choosen for the track
     this.soundCells=[]; //Array of Boolean - each one represent a cell (activate/desactivate)
