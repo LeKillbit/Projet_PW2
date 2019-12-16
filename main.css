@@ -1,0 +1,30 @@
+@charset "ISO-8859-1";
+/* CSS Document */
+
+body {
+	background: #333;
+	font: 12px Arial, Helvetica, sans-serif;
+	color: #FFF;
+}
+
+td{
+	border:2px solid black;
+	height: 50px;
+}
+
+/*Tables witch represent a track (second table)*/
+.trackTable{
+	border:2px solid black;
+	border-collapse: collapse;
+	width: 1000px;
+}
+
+/*Cell to choose sound*/
+/*Sound as been choosen*/
+.chooseSoundCell {
+	background-color:green;
+}
+/*Sound doesn't as been choosen*/
+.unchooseSoundCell {
+	background-color: red;
+}

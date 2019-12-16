@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="ISO-8859-1">
+    <!-- Title of web page -->
+    <title>Music</title>
+
+    <!-- Link of css -->
+    <link rel="stylesheet" media="screen" href="main.css">
+
+    <!-- JavaScript which manage interface of track -->
+    <script type="text/javascript" src="interface.js"></script>
+
+    <!-- JavaScript which manage tracks themself -->
+    <script type="text/javascript" src="track.js"></script>
+
+    <!-- Inside document JavaScript (especially using by test) -->
+    <script type="text/javascript">
+
+    </script>
+  </head>
+
+  <body id="body">
+
+    <!-- Board contains all the tracks -->
+    <table id="board" class="tableStyle" border="1" ></table>
+
+    <!-- Button append track -->
+    <input type="button" value="Ajouter une piste" onclick="ajout_piste();" />
+
+    <!-- play track -->
+    <input type="button" value="Jouer" onclick="play();" />
+  </body>
+</html>
