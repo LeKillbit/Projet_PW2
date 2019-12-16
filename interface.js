@@ -8,6 +8,8 @@ colorRemaining = ["#f4d03f", "#f8c471", "#e67e22", "#ba4a00", "#2471a3", "#2e86c
 trackArray = []; //track allocate
 //TOCHECK : maybe automatize it especially if we allow user to add their own track
 soundArray = ["marimba1", "marimba2", "bass1", "bass2", "accordeon1", "accordeon2", "grelots", "maracas", "tambourg", "tambourin1", "tambourin2", "trompette1", "trompette2"] //List of Sound possible to play
+playing = 0; //is the track currently playing ?
+
 
 //onLoad function
 //Create a track - Call when document is load
@@ -325,8 +327,16 @@ function removeTrack(mouseEvent) {
 	nbTrack--;
 }
 
+// stop playing the track
+function stop() {
+	playing = 0;
+
+}
+
 //play tracks
 async function play() {
+	//set playing to 1
+	playing = 1;
 	var trackEnable = []; //Store track which are use
 	//Fill arrays
 	for (var j = 0; j < trackArray.length; j++) {
@@ -365,7 +375,11 @@ async function play() {
 			}
 		}
 	}
-	play();
+	
+	//if stop has not been requested, continue playing
+	if (playing) {
+		play();
+	}
 }
 
 //make program sleep
