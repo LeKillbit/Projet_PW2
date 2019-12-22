@@ -55,15 +55,11 @@ class Track{
 	//set a cell to true
 	addSound(indexSound){
 		this.soundCells[indexSound-1]=true;
-		//TO REMOVE - affiche l'état du tableau de son
-		//console.log("Track "+this.id+" - "+this.soundCells);
 	}
 
 	//set a cell to false
 	removeSound(indexSound){
 		this.soundCells[indexSound-1]=false;
-		//TO REMOVE - affiche l'état du tableau de son
-		//console.log("Track "+this.id+" - "+this.soundCells);
 	}
 
 }

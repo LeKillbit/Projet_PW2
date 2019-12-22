@@ -3,16 +3,16 @@ const MAX_TRACK = 10;
 //Variables
 nbTrack = 0; //Current number of track
 lenghtBoard = 20; //Current number of cell of a track
-idRemaining = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; //id not allocate
+idRemaining = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; //id not allocated
 colorRemaining = ["#f4d03f", "#f8c471", "#e67e22", "#ba4a00", "#2471a3", "#2e86c1", "#7d3c98", "#2e4053", "#707b7c", "#a6acaf", "#a2d9ce"]; //color not allocate
-trackArray = []; //track allocate
+trackArray = []; //track allocated
 //TOCHECK : maybe automatize it especially if we allow user to add their own track
 soundArray = ["marimba1", "marimba2", "bass1", "bass2", "accordeon1", "accordeon2", "grelots", "maracas", "tambourg", "tambourin1", "tambourin2", "trompette1", "trompette2"] //List of Sound possible to play
 playing = 0; //is the track currently playing ?
 
 
 //onLoad function
-//Create a track - Call when document is load
+//Create a track - Call when document is loaded
 window.onload = function() {
 	//Load a first track
 	ajout_piste();
@@ -22,14 +22,15 @@ window.onload = function() {
 //Functions
 // Append a new Track and allocate id and color - Call by button Add and onLoad
 function ajout_piste() {
-	//increase var global nbTrack
-	nbTrack++;
 
 	//Check if the maximal number of Track is not achieved
-	if (nbTrack > MAX_TRACK) {
+	if (nbTrack >= MAX_TRACK) {
 		alert("Nombre limite de pistes atteint")
 		return
 	}
+	
+	//increase var global nbTrack
+	nbTrack++;
 
 	//Reserve the track (color and number)
 	var idtrack = idRemaining.shift();
@@ -139,17 +140,6 @@ function ajout_piste() {
 	//APPEND THE ROW TO THE TABLE-BODY
 	board.appendChild(trackBoard);
 
-
-	//TO REMOVE - affiches les différents tableaux
-	/*
-  tab="";
-  for(var j=0;j<trackArray.length;j++){
-	tab=tab+(trackArray[j].getTrackId()+",");
-  }
-  console.log("trackArray :"+tab)
-  console.log("idColor :"+idRemaining)
-  console.log("colorRemaining :"+colorRemaining)
-	 */
 }
 
 // Change state of a cell and add a sound to the track - Call when we click on a cell
@@ -315,16 +305,9 @@ function removeTrack(mouseEvent) {
 
 	//Remove the track of the interface
 	mouseEvent.target.parentElement.parentElement.remove();
-
-	//TO REMOVE - affiches les différents tableaux
-	/*tab="";
-	for(var j=0;j<trackArray.length;j++){
-	  tab=tab+(trackArray[j].getTrackId()+",");
-	}
-	console.log("trackArray :"+tab);
-	console.log("idColor :"+idRemaining);
-	console.log("colorRemaining :"+colorRemaining);*/
 	nbTrack--;
+	if (nbTrack==0)
+		playing=0;
 }
 
 // stop playing the track
@@ -335,9 +318,11 @@ function stop() {
 
 //play tracks
 async function play() {
+	if (playing)
+			return;
 	//set playing to 1
 	playing = 1;
-	var trackEnable = []; //Store track which are use
+	var trackEnable = []; //Store track which are in use
 	//Fill arrays
 	for (var j = 0; j < trackArray.length; j++) {
 		if (trackArray[j].getSound() != "undefined") {
